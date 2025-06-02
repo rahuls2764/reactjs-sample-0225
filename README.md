@@ -28,8 +28,7 @@ Live Demo: https://reactjs-sample-0225-lilac.vercel.app/
 - React.js / Next.js
 - Firebase (for backend and data storage) *(optional, you can switch as needed)*
 - ethers.js for MetaMask wallet connection
-- Axios / Fetch API for external API calls
-- CSS / Styled Components for styling
+- tailwindcss / Styled Components for styling
 - Vercel for deployment
 
 ## MetaMask Wallet Connection
