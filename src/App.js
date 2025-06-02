@@ -163,11 +163,13 @@ const LoginPage = ({ onLogin, onSwitchToSignup }) => {
 
     const docSnap = await getDoc(doc(db, "users", user.uid));
     const userData = docSnap.exists() ? docSnap.data() : { name: user.email.split("@")[0] };
+    const profileImage = await ProfileAPI.getRandomProfile();
+
 
     onLogin({
       email: user.email,
       name: userData.name,
-      profileImage: userData.profileImage
+      profileImage
     });
   } catch (error) {
     alert("Invalid email or password");
