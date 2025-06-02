@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Task Board React Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive task board app built with React/Next.js that helps you manage your tasks efficiently across multiple pages with a clean and modern UI. The app supports user profiles, task management, dynamic profile images from an external API, and browser MetaMask wallet integration.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Demo
 
-### `npm start`
+Live Demo: https://reactjs-sample-0225-lilac.vercel.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Task Management:** Create, update, and delete tasks seamlessly.
+- **Multiple Pages:** Navigate between task lists and user profile pages.
+- **Responsive Design:** Fully responsive layout that works on desktop and mobile browsers.
+- **Profile Icon:** Loads a random profile image from the [Picsum Photos API](https://picsum.photos/).
+- **Popups & Notifications:** Friendly popup messages and modals for user interactions.
+- **Data Persistence:** Uses Firebase for backend storage and user management (can be replaced with any other backend or local storage).
+- **External API Integration:** Demonstrates fetching data from an external API for profile images.
+- **MetaMask Integration:** Connect your browser MetaMask wallet for future blockchain-enabled features.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React.js / Next.js
+- Firebase (for backend and data storage) *(optional, you can switch as needed)*
+- ethers.js for MetaMask wallet connection
+- Axios / Fetch API for external API calls
+- CSS / Styled Components for styling
+- Vercel for deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Node.js (v14+ recommended)
+- npm or yarn package manager
+- Firebase account (if using Firebase backend)
+- MetaMask browser extension installed for wallet connection features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   git clone https://github.com/rahuls2764/reactjs-sample-0225.git
+   cd task-board-app
