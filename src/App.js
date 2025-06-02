@@ -149,7 +149,7 @@ const getUserFromLocalStorage = (email) => {
 const LoginPage = ({ onLogin, onSwitchToSignup }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
+  
   const [isLoading, setIsLoading] = useState(false);
 
 
@@ -217,13 +217,7 @@ const LoginPage = ({ onLogin, onSwitchToSignup }) => {
           
           <div className="flex items-center justify-between text-white text-sm">
             <label className="flex items-center space-x-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="w-4 h-4 rounded border-white/30"
-              />
-              <span>Remember me</span>
+              
             </label>
             <button type="button" className="text-white/80 hover:text-white">
               Forgot Password?
@@ -732,9 +726,7 @@ const deleteTask = async (id) => {
               <div className="flex items-center space-x-4">
                 <h2 className="text-lg font-semibold text-gray-900">My Tasks</h2>
                 <div className="relative">
-                  <button className="p-1 hover:bg-gray-100 rounded">
-                    <MoreVertical className="w-4 h-4 text-gray-500" />
-                  </button>
+                  
                 </div>
               </div>
               
