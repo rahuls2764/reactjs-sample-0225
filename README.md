@@ -32,21 +32,17 @@ Live Demo: https://reactjs-sample-0225-lilac.vercel.app/
 - CSS / Styled Components for styling
 - Vercel for deployment
 
----
+## MetaMask Wallet Connection
 
-## Getting Started
+1. Click the Connect Wallet button in the app header to connect your MetaMask wallet.
+2. The app will prompt you to allow connection to your browser wallet.
+3. Once connected, your wallet address will be displayed.
+4. This integration lays the foundation for future blockchain interactions like task rewards, NFT integration, or token payments.
 
-### Prerequisites
 
-- Node.js (v14+ recommended)
-- npm or yarn package manager
-- Firebase account (if using Firebase backend)
-- MetaMask browser extension installed for wallet connection features
+## Thank You
+**Email** - sonirahul2764@gmail.com
 
-### Installation
+   
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/rahuls2764/reactjs-sample-0225.git
-   cd task-board-app
+   
