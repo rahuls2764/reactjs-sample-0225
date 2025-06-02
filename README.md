@@ -6,7 +6,7 @@ A responsive task board app built with React/Next.js that helps you manage your 
 
 ## Demo
 
-Live Demo: https://reactjs-sample-0225-lilac.vercel.app/
+Live Demo: https://reactjs-sample-0225-g5pg.vercel.app/
 
 ---
 
