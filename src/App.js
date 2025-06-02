@@ -14,39 +14,109 @@ import {
   deleteDoc
 } from "firebase/firestore";
 
-
-
-
-
-// Web3 Integration (Mock implementation)
+// Web3 Integration (Proper MetaMask implementation)
 const Web3Integration = () => {
   const [account, setAccount] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
+  const [chainId, setChainId] = useState(null);
+  const [error, setError] = useState(null);
 
-  const connectWallet = async () => {
-    // Mock Web3 connection
+  // Check if wallet is connected when component mounts
+  useEffect(() => {
     if (typeof window !== 'undefined' && window.ethereum) {
-      try {
-        // In a real app, you would use: await window.ethereum.request({ method: 'eth_requestAccounts' });
-        const mockAccount = '0x' + Math.random().toString(16).substr(2, 40);
-        setAccount(mockAccount);
+      checkWalletConnection();
+      setupEventListeners();
+    }
+  }, []);
+
+  const checkWalletConnection = async () => {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+      if (accounts.length > 0) {
+        setAccount(accounts[0]);
         setIsConnected(true);
-        return mockAccount;
-      } catch (error) {
-        console.error('Error connecting wallet:', error);
+        // Get current chain ID
+        const id = await window.ethereum.request({ method: 'eth_chainId' });
+        setChainId(id);
       }
-    } else {
-      // Mock connection for demo
-      const mockAccount = '0x' + Math.random().toString(16).substr(2, 40);
-      setAccount(mockAccount);
-      setIsConnected(true);
-      return mockAccount;
+    } catch (err) {
+      console.error('Error checking wallet connection:', err);
+      setError('Failed to check wallet connection');
     }
   };
 
-  return { account, isConnected, connectWallet };
-};
+  const setupEventListeners = () => {
+    if (window.ethereum) {
+      // Handle account changes
+      window.ethereum.on('accountsChanged', (accounts) => {
+        if (accounts.length === 0) {
+          // Wallet disconnected
+          setAccount(null);
+          setIsConnected(false);
+          setChainId(null);
+        } else {
+          // Account changed
+          setAccount(accounts[0]);
+        }
+      });
 
+      // Handle chain changes
+      window.ethereum.on('chainChanged', (chainId) => {
+        setChainId(chainId);
+        // Recommended to reload the page to avoid any issues with chain changes
+        window.location.reload();
+      });
+    }
+  };
+
+  const connectWallet = async () => {
+    if (typeof window !== 'undefined' && window.ethereum) {
+      try {
+        // Request account access
+        const accounts = await window.ethereum.request({ 
+          method: 'eth_requestAccounts' 
+        });
+        
+        // Get current chain ID
+        const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+        
+        setAccount(accounts[0]);
+        setChainId(chainId);
+        setIsConnected(true);
+        setError(null);
+        
+        return accounts[0];
+      } catch (err) {
+        console.error('Error connecting wallet:', err);
+        setError('Failed to connect wallet. Please make sure MetaMask is installed and try again.');
+        setIsConnected(false);
+        return null;
+      }
+    } else {
+      setError('MetaMask is not installed. Please install it to use this feature.');
+      return null;
+    }
+  };
+
+  // Optional: Add function to switch networks
+  const switchNetwork = async (chainId) => {
+    try {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId }],
+      });
+    } catch (err) {
+      // This error code indicates that the chain has not been added to MetaMask
+      if (err.code === 4902) {
+        setError('This network is not available in your wallet');
+      } else {
+        setError('Failed to switch network');
+      }
+    }
+  };
+
+  return { account, isConnected, chainId, error, connectWallet, switchNetwork };
+};
 
 // API Service for random profile images
 const ProfileAPI = {
